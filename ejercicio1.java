@@ -85,6 +85,26 @@ public class ejercicio1 {
                                         System.out.println("adios hasta la proxima ! ");
                                     }
                                 }
+                            }break;
+                        }
+                    case 3:
+                        if(!salirrS){
+                            System.out.println("no existen usuarios para modificar ! ");
+                        }else{
+                            while(true){
+                                System.out.println("Escriba el Usuario que quiere modificar ! ");
+                                Scanner modiusuR = new Scanner(System.in);
+                                String modificarUsuar = modiusuR.nextLine();
+                                for(String buscarModificar : usuarios){
+                                    if(modificarUsuar.equals(buscarModificar)){
+                                        Scanner cambiarNombre = new Scanner(System.in);
+                                        String usuarioCambiar = cambiarNombre.nextLine();
+                                        
+                                        
+                                    }else{
+                                        System.out.println("Usuario no encontrado ! ");
+                                    }
+                                }
                             }
                         }
 
