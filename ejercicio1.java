@@ -6,13 +6,13 @@ public class ejercicio1 {
     public static void main(String[] args) {
         ArrayList<String> usuarios = new ArrayList<>();
         Scanner agregarNombre = new Scanner(System.in);
-        Scanner modificarNombre = new Scanner(System.in);
+        Scanner verNombre = new Scanner(System.in);
         Scanner opciones = new Scanner(System.in);
+        boolean salirrS = false;
 
         int op;
 
         do {
-            boolean salirrS = false;
             System.out.println("Gestor Para Agregar Alumnos modificar y eliminar");
             System.out.println("Seleccione una de las opciones:");
             System.out.println("1. Agregar usuario");
@@ -69,10 +69,23 @@ public class ejercicio1 {
                         break;
 
                     case 2:
+                        Scanner usuarVer = new Scanner(System.in);
                         if(!salirrS){
                             System.out.println("Error: No tiene Usuarios Agregados ! ");
                         }else{
-                            
+                            String nombreVer = verNombre.nextLine();
+                            for(String buscarN : usuarios){
+                                if(nombreVer.equals(buscarN)){
+                                    System.out.println(nombreVer);
+                                    System.out.println("Quiere ver todos los usuarios que tiene?");
+                                    String verll = usuarVer.nextLine();
+                                    if(verll.equals("si")){
+                                        System.out.println("sus usuarios son : " + usuarios);
+                                    }else{
+                                        System.out.println("adios hasta la proxima ! ");
+                                    }
+                                }
+                            }
                         }
 
                     default:
