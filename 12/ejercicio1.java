@@ -33,7 +33,8 @@ public class ejercicio1 {
                             boolean tieneNumero = false;
                             boolean tieneCaracter = false;
                             Scanner salirse = new Scanner(System.in);
-
+                            System.out.println("Agregue al usuario ! ");
+                            System.out.println("");
                             String AgregarN = agregarNombre.nextLine();
 
                             for (int i = 0; i < AgregarN.length(); ++i) {
@@ -52,6 +53,8 @@ public class ejercicio1 {
 
                             if (!tieneCaracter && !tieneNumero) {
                                 usuarios.add(AgregarN);
+                                System.out.println("");
+                                System.out.println("Lista de usuarios : " + usuarios);
                                 System.out.println("Quiere salir? s/n");
 
                                 String salirS = salirse.nextLine();
@@ -94,17 +97,92 @@ public class ejercicio1 {
                             while(true){
                                 System.out.println("Escriba el Usuario que quiere modificar ! ");
                                 Scanner modiusuR = new Scanner(System.in);
-                                String modificarUsuar = modiusuR.nextLine();
-                                for(String buscarModificar : usuarios){
-                                    if(modificarUsuar.equals(buscarModificar)){
-                                        Scanner cambiarNombre = new Scanner(System.in);
-                                        String usuarioCambiar = cambiarNombre.nextLine();
-                                        
-                                        
-                                    }else{
-                                        System.out.println("Usuario no encontrado ! ");
+                                Scanner elegirIndice = new Scanner(System.in);
+                                Scanner modifi = new Scanner(System.in);
+                                String nombreModificar = modiusuR.nextLine();
+                                int ii = -1;
+                                if(usuarios.contains(nombreModificar)){
+                                    System.out.println("Usuario encontrado");
+                                    for(int i = 0; i < usuarios.size(); ++i){
+                                        ii++;
+                                        System.out.println(usuarios.get(i) + " : " + ii);
                                     }
+
+                                    boolean tieneNumero = false;
+                                    boolean tieneCaracter = false;
+                                    boolean quiereSalirse = false;
+
+                                    while(true){
+                                        System.out.println("");
+                                        System.out.println("Ahora ponga el nuevo nombre de usuario :  ! ");
+                                        String modifis = modifi.nextLine();
+
+
+                                        for (int i = 0; i < modifis.length(); ++i) {
+                                            if (Character.isDigit(modifis.charAt(i))) {
+                                                System.out.println("Error: No puede ser un digito");
+                                                tieneNumero = true;
+                                            }
+                                        }
+
+                                        for (int i = 0; i < modifis.length(); ++i) {
+                                            if (!Character.isLetterOrDigit(modifis.charAt(i))) {
+                                                System.out.println("No debe contener un Simbolo Especial!");
+                                                tieneCaracter = true;
+                                            }
+                                        }
+
+                                        if(!tieneCaracter && !tieneNumero){
+                                            int iii = -1;
+                                            for(int i = 0; i < usuarios.size(); ++i){
+                                                iii++;
+                                                System.out.println(usuarios.get(i) + " : " + iii);
+                                            }       
+                                            System.out.println("Eligue el indice del nombre que quieres cambiar : ");
+                                            int indicesS = elegirIndice.nextInt();
+                                            if(indicesS < usuarios.size() || indicesS > usuarios.size()){
+                                                usuarios.set(indicesS, modifis);
+                                                Scanner quiereSalir1 = new Scanner(System.in);
+                                                System.out.println("Ahora tus Usuarios se ven asi : " + usuarios);
+                                                System.out.println("");
+                                                System.out.println("Quiere salirse s/n");
+                                                String quieresalir2 = quiereSalir1.nextLine();
+                                                if(quieresalir2.contains("s")){
+                                                    System.out.println("Adios ! ");
+                                                    quiereSalirse = true;
+                                                    break;
+                                                }else{
+                                                    System.out.println("tiene que ser un s ");
+                                                }
+                                                
+
+                                            }
+                                            
+                                        }
+
+                                        if(!quiereSalirse){
+                                            break;
+                                        }
+
+                                        
+
+
+                                    }
+                                    
+                                    
+                                    
+                                 
+                                    
+                                    
+                                    
+
+
+                                }else{
+                                    System.out.println("usuario no encontrado ! ");
                                 }
+                                
+                                
+                                
                             }
                         }
 
