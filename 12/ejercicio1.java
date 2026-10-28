@@ -9,6 +9,9 @@ public class ejercicio1 {
         Scanner verNombre = new Scanner(System.in);
         Scanner opciones = new Scanner(System.in);
         boolean salirrS = false;
+        boolean salirrS2 = false;
+        boolean salirrS3 = false;
+        boolean salirrS4 = false;
 
         int op;
 
@@ -55,13 +58,24 @@ public class ejercicio1 {
                                 usuarios.add(AgregarN);
                                 System.out.println("");
                                 System.out.println("Lista de usuarios : " + usuarios);
-                                System.out.println("Quiere salir? s/n");
-
-                                String salirS = salirse.nextLine();
-
-                                if (salirS.equals("s")) {
-                                    salirrS = true;
+                                while(true){
+                                    System.out.println("Quiere salir? s/n");
+                                    String salirS = salirse.nextLine();
+                                    if (salirS.equals("s")) {
+                                        salirrS = true;
+                                        salirrS2 = true;
+                                        salirrS3 = true;
+                                        salirrS4 = true;
+                                        break;
+                                    }else if(salirS.equals("n")){
+                                        break;
+                                    }else{
+                                        System.out.println("Error: debe de ser s o n ");
+                                    }
                                 }
+                               
+
+                                
                             }
 
                             if (salirrS) {
@@ -73,25 +87,34 @@ public class ejercicio1 {
 
                     case 2:
                         Scanner usuarVer = new Scanner(System.in);
-                        if(!salirrS){
+                        if(!salirrS2){
                             System.out.println("Error: No tiene Usuarios Agregados ! ");
                         }else{
+                            System.out.println("Ponga el nombre del usuario que necesita ver ! ");
+                            System.out.println("");
                             String nombreVer = verNombre.nextLine();
                             for(String buscarN : usuarios){
                                 if(nombreVer.equals(buscarN)){
-                                    System.out.println(nombreVer);
-                                    System.out.println("Quiere ver todos los usuarios que tiene?");
-                                    String verll = usuarVer.nextLine();
-                                    if(verll.equals("si")){
-                                        System.out.println("sus usuarios son : " + usuarios);
-                                    }else{
-                                        System.out.println("adios hasta la proxima ! ");
+                                    System.out.println("El usuario fue encontrado : " + nombreVer);
+                                    while(true){
+                                        System.out.println("Quiere ver todos los usuarios que tiene? s/n");
+                                        String verll = usuarVer.nextLine();
+                                        if(verll.equals("s")){
+                                            System.out.println("sus usuarios son : " + usuarios);
+                                            break;
+                                        }else if(verll.equals("n")){
+                                            System.out.println("adios hasta la proxima ! ");
+                                            break;
+                                        }else{
+                                            System.out.println("Debe de colocar s/n");
+                                        }
                                     }
+                                    
                                 }
                             }break;
                         }
                     case 3:
-                        if(!salirrS){
+                        if(!salirrS3){
                             System.out.println("no existen usuarios para modificar ! ");
                         }else{
                             while(true){
@@ -102,7 +125,7 @@ public class ejercicio1 {
                                 String nombreModificar = modiusuR.nextLine();
                                 int ii = -1;
                                 if(usuarios.contains(nombreModificar)){
-                                    System.out.println("Usuario encontrado");
+                                    System.out.println("Usuario encontrado : " + nombreModificar);
                                     for(int i = 0; i < usuarios.size(); ++i){
                                         ii++;
                                         System.out.println(usuarios.get(i) + " : " + ii);
@@ -142,58 +165,65 @@ public class ejercicio1 {
                                             int indicesS = elegirIndice.nextInt();
                                             if(indicesS < usuarios.size() || indicesS > usuarios.size()){
                                                 usuarios.set(indicesS, modifis);
-                                                Scanner quiereSalir1 = new Scanner(System.in);
                                                 System.out.println("Ahora tus Usuarios se ven asi : " + usuarios);
                                                 System.out.println("");
-                                                System.out.println("Quiere salirse s/n");
-                                                String quieresalir2 = quiereSalir1.nextLine();
-                                                if(quieresalir2.contains("s")){
-                                                    System.out.println("Adios ! ");
-                                                    quiereSalirse = true;
-                                                    break;
-                                                }else{
-                                                    System.out.println("tiene que ser un s ");
-                                                }
-                                                
-
+                                                break;
                                             }
                                             
                                         }
 
-                                        if(!quiereSalirse){
-                                            break;
-                                        }
-
                                         
-
-
                                     }
-                                    
-                                    
-                                    
-                                 
-                                    
-                                    
-                                    
-
-
+                                    Scanner quiereSalir1 = new Scanner(System.in);
+                                    System.out.println("Quiere salirse s/n");
+                                    String quieresalir2 = quiereSalir1.nextLine();
+                                    if(quieresalir2.contains("s")){
+                                        System.out.println("Adios ! ");
+                                        quiereSalirse = true;
+                                        break;
+                                    }else{
+                                        System.out.println("tiene que ser un s ");
+                                    }
                                 }else{
                                     System.out.println("usuario no encontrado ! ");
                                 }
-                                
-                                
-                                
+           
                             }
                         }
+                    case 4:
+                        if(!salirrS4){
+                            System.out.println("Error: No ahi usuarios para borrar ! ");
+                        }else{
+                            while(true){
+                                System.out.println("Bienvenido a la zona de borrar usuarios ! ");
+                                Scanner br = new Scanner(System.in);
+                                System.out.println("Primero busque el usuario que quiera borrar ! ");
+                                String borrarUsuario = br.nextLine();
+                                for(String buscarUser : usuarios){
+                                    if(borrarUsuario.equals(buscarUser)){
+                                        System.out.println("El usuario : " + borrarUsuario + " fue encontrado exitosamente");
+                                        Scanner bU = new Scanner(System.in);
+                                        System.out.println("Ahora muestre el usuario que quiera eliminar : ");
+                                        System.out.println(usuarios);
+                                        String borrarUser2 = bU.nextLine();
+                                        usuarios.remove(borrarUser2);
+                                        System.out.println(usuarios);
 
+                                
+                                        
+
+                                    }else{
+                                        System.out.println("USUARION no encontrado ! ");
+                                    }
+                                }
+                            }
+                        }   
+                        
                     default:
                         break;
                 }
-
             }
-
         } while (op != 5);
-
         agregarNombre.close();
         opciones.close();
     }
